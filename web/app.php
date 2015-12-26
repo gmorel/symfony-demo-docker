@@ -10,6 +10,8 @@ use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
+//var_dump($_SERVER);
+
 /**
  * @var Composer\Autoload\ClassLoader
  */
@@ -18,7 +20,10 @@ include_once __DIR__.'/../app/bootstrap.php.cache';
 
 $host = 'example_com';
 
-$env = getenv('SYMFONY_ENV') ?: 'prod';
+if (null === $env) {
+    $env = 'prod';
+}
+//$env = getenv('SYMFONY_ENV') ?: 'prod';
 $debug = 'dev' === $env;
 
 if ($debug) {
